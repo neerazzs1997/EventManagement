@@ -1,11 +1,12 @@
-const userModel = require("../models/userModel");
-const validator = require("../validator/validator");
+const userModel = require("../models/userModel");                     // // Require a path usermodel
+const validator = require("../validator/validator");                  // // require a path of validator
 const jwt = require("jsonwebtoken");
 const validatEmail = require("validator")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');                                     // // using bcrypt opeations to make our password more secure and not readable 
 
 
 
+// -------------------------------------------  CreateUser --------------------------------------------------------------
 const registerUser = async function (req, res) {
     try {
   
@@ -69,9 +70,6 @@ const registerUser = async function (req, res) {
           isDeleted: false,
         });
         
-  
-        
-  
         if (isEmailAlreadyUsed) {
           return res.status(400).send({
             status: false,
@@ -129,15 +127,12 @@ const registerUser = async function (req, res) {
 
 
 
-
+// -------------------------------------------------------- UserLogin -------------------------------------------------
   
-
 const loginUser = async function (req, res) {
     try {
       let email = req.body.email;
       let password = req.body.password;
-  
-    
   
       if (!validator.isValid(email)) {
         return res
@@ -220,7 +215,7 @@ const loginUser = async function (req, res) {
 
 
   
-
+// ------------------------------------------------------ updatePassword --------------------------------------
 
 const updatePassword = async function(req,res){
   try{
@@ -228,8 +223,6 @@ const updatePassword = async function(req,res){
 
   let requestBody =req.body
 
- // const requestBody = req.body
-  
 
   if(!validator.isValidBody(req.body)){
       return res.status(400).send({ status: false, message: "ERROR! : request body is empty" });
@@ -270,7 +263,7 @@ const updatePassword = async function(req,res){
 
 }
 
-
+// ---------------------------------------------------------- GetPassword --------------------------------------------
 
 
 const getPassword = async function(req,res){

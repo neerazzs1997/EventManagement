@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const userController = require("../controllers/userController")
-// const productController = require("../controller/productController")
-// const cartController = require('../controller/cartController')
-// const orderController = require("../controller/orderController")
+const eventController = require("../controllers/eventController")
 const auth = require("../middleware/middleware")
 
 
@@ -13,12 +11,26 @@ router.get('test-me', function(req,res){
 })
 
 
-router.post('/register', userController.registerUser)
-router.post('/login', userController.loginUser)
-router.get("/logout",auth.authentication,userController.userLogout)
-router.put("/newPassword/:userId",auth.authorization,userController.updatePassword)
-router.get("/resetPasswrod/:userId",auth.authentication,userController.getPassword)
+router.post('/register', userController.registerUser)                                       // // createuser 
 
+router.post('/login', userController.loginUser)                                             // // loginUser
+                   
+router.get("/logout",auth.authentication,userController.userLogout)                         // // logout user
+
+router.put("/newPassword/:userId",auth.authorization,userController.updatePassword)         // // update the password
+
+router.get("/resetPasswrod/:userId",auth.authentication,userController.getPassword)         // // reset password
+
+
+router.post('/events', eventController.eventController)                                     // // create events
+
+router.get('/events/:userId',auth.authorization, eventController.eventController)            // // get userid with events
+
+router.get('/eventsByQuery',auth.authorization,eventController.eventController)              // // get events with query params
+
+router.put('/events/:eventId',auth.authorization, eventController.eventController)           // // update events with event id 
+
+router.put('/events/:eventId',auth.authorization, eventController.eventController)           // // get all the events
 
 
 router.get("*", async function(req,res){

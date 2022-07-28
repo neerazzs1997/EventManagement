@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require('express');                                    // // require a express
+const bodyParser = require('body-parser');                             // // require a bodyparser to easy to read our data 
 // const mongoose = require('mongoose')
-const route = require('./route/route');
+const route = require('./route/route');                                // // require a path of router file
 
-const app = express();
+const app = express();                                                 // // globle middleware 
   
-app.use(bodyParser.json());
+app.use(bodyParser.json());                                            // // we can parse our jason format data
 
 
 
@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 // })
 // .then( () => console.log("MongoDb is connected"))
 // .catch ( err => console.log(err) )
-
-app.use('/', route);
+ 
+app.use('/', route);                                                  // // router based middleware
 
 
 app.listen(process.env.PORT || 3000, function () {
-    console.log('Express app running on port ' + (process.env.PORT || 3000))
+    console.log('Express app running on port ' + (process.env.PORT || 3000))             // // connect with our server with port number 3000
 });
 

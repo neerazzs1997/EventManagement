@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose");                  // // require a mongoose to validate our schema 
 const bcrypt = require("bcrypt");
 
 

@@ -13,14 +13,12 @@ const eventSchema = new mongoose.Schema(
             ref : 'User32',
             required : true
         },
-        invitedAt:{
-            timestamps:true
-        }
+      
     }],
-    isDeleted:{
-      type:Boolean,
-      default:false
-  }
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
