@@ -22,3 +22,7 @@ app.listen(process.env.PORT || 3000, function () {
     console.log('Express app running on port ' + (process.env.PORT || 3000))             // // connect with our server with port number 3000
 });
 
+
+
+
+// // before few days my mongodb connectivity is not proper working and also my cluster is not working well thats why i am unable to give response ,only able to check in my terminal 

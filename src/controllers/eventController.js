@@ -10,15 +10,6 @@ const eventController = async function (req, res) {
      // const requestBody = req.body;
       const requestBody = req.body;
       
-  
-      if (!validator.isValidBody(requestBody)) {
-        return res
-          .status(400)
-          .send({ status: false, message: "ERROR! : request body is empty" });
-      }
-  
-  
-
       if (!validator.isValidBody(requestBody)) {
         return res
           .status(400)
@@ -86,6 +77,7 @@ const eventController = async function (req, res) {
    
   
 
+
   const getAllEvents = async function (req, res) {
     try {
       let result = {};
@@ -104,7 +96,7 @@ const eventController = async function (req, res) {
         res.status(400).send({ status: false, msg: "userId not Found" });
         
         
-      let eventsDetails = await eventModel.find({ userId: userDeatils._id });
+      let eventsDetails = await eventModel.find({ createdBy: userDeatils._id });
       if (!eventsDetails) {
         res
           .status(400)
